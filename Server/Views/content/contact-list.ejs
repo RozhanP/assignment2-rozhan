@@ -12,20 +12,20 @@
                         <th scope="col">Contact Number</th>
                         <th scope="col">Email Address</th>
                         <th scope="col">More</th>
-                        <th scope="col">More</th> 
+                        <th></th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody id="BusinessContactsList">
                     <!-- Repeatable Rows -->
-                    <% for(let count = 0; count < movies.length; count++) { %>
+                    <% for(let count = 0; count < contacts.length; count++) { %>
                         <tr>
                             <th scope="row" class="text-center"><%= count + 1 %></th>
                             <td><%= contact[count].Contact Name %></td>
-                            <td><%= contact[count].Contact Number< %></td>
+                            <td><%= contact[count].Contact Number %></td>
                             <td><%= contact[count].Email Address %></td>
-                            <td><%= contact[count].Delete %></td>
-                            <td><%= contact[count].Update %></td>
+                            <td><%= contact[count].More %></td>
+                            <td></td>
                             <td></td>
                         </tr>
                     <% } %>
