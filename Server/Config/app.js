@@ -40,7 +40,7 @@ const cors_1 = __importDefault(require("cors"));
 let localStrategy = passport_local_1.default.Strategy;
 const user_1 = __importDefault(require("../Models/user"));
 const index_1 = __importDefault(require("../Routes/index"));
-const movie_list_1 = __importDefault(require("../Routes/movie-list"));
+const contact_list_1 = __importDefault(require("../Routes/contact-list"));
 const auth_1 = __importDefault(require("../Routes/auth"));
 const app = (0, express_1.default)();
 const DBConfig = __importStar(require("./db"));
@@ -60,6 +60,8 @@ app.use(express_1.default.urlencoded({ extended: false }));
 app.use((0, cookie_parser_1.default)());
 app.use(express_1.default.static(path_1.default.join(__dirname, '../../Client')));
 app.use(express_1.default.static(path_1.default.join(__dirname, '../../node_modules')));
+app.use('/', index_1.default);
+app.use('/', contact_list_1.default);
 app.use((0, cors_1.default)());
 app.use((0, express_session_1.default)({
     secret: DBConfig.Secret,
@@ -73,7 +75,7 @@ passport_1.default.use(user_1.default.createStrategy());
 passport_1.default.serializeUser(user_1.default.serializeUser());
 passport_1.default.deserializeUser(user_1.default.deserializeUser());
 app.use('/', index_1.default);
-app.use('/', movie_list_1.default);
+app.use('/', contact_list_1.default);
 app.use('/', auth_1.default);
 app.use(function (req, res, next) {
     next((0, http_errors_1.default)(404));

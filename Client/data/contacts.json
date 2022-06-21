@@ -1,0 +1,21 @@
+{
+    "contacts":
+    [
+        {
+            "Contact Name": "Saba Hatami",
+            "Contact Number": "6047685930",
+            "Email Address": "saba_j@gmail.com"
+            
+        },
+        {
+            "Contact Name": "Naghmeh Seifi",
+            "Contact Number": "4619078044",
+            "Email Address": "naghoo@yahoo.com"
+        },
+        {
+            "Contact Name": "Mahsa Beigi",
+            "Contact Number": "4613474087",
+            "Email Address": "mahmah@yahoo.com"
+        }
+    ]    
+}
