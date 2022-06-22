@@ -18,7 +18,7 @@ function DisplayContactList(req, res, next) {
 exports.DisplayContactList = DisplayContactList;
 function DisplayEditList(req, res, next) {
     let id = req.params.id;
-    contact_list_1.default.findById(id, {}, {}, function (err, movieToEdit) {
+    contact_list_1.default.findById(id, {}, {}, function (err, contactToEdit) {
         if (err) {
             console.error(err);
             res.end(err);
@@ -45,6 +45,14 @@ function ProcessEditList(req, res, next) {
 }
 exports.ProcessEditList = ProcessEditList;
 function ProcessDeleteList(req, res, next) {
+    let id = req.params.id;
+    contact_list_1.default.remove({ _id: id }, function (err) {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        res.redirect('contact-list');
+    });
 }
 exports.ProcessDeleteList = ProcessDeleteList;
 //# sourceMappingURL=contact-list.js.map

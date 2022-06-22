@@ -1,4 +1,5 @@
 import express from 'express';
+import { CallbackError } from 'mongoose';
 
 import Contacts from '../Models/contact-list';
 
@@ -19,7 +20,7 @@ export function DisplayContactList(req: express.Request, res: express.Response, 
 export function DisplayEditList(req: express.Request, res: express.Response, next: express.NextFunction):void
 {
     let id = req.params.id;
-    Contacts.findById(id,{},{},function(err,movieToEdit)
+    Contacts.findById(id,{},{},function(err,contactToEdit)
     {
         if(err)
         {
@@ -41,7 +42,7 @@ export function ProcessEditList(req: express.Request, res: express.Response, nex
         "Contact Number":req.body.contactNumber,
         "Email Address":req.body.emailAddress
     });
-    Contacts.updateOne({_id:id},updatedContact,function(err:ErrorCallback)
+    Contacts.updateOne({_id:id},updatedContact,function(err:CallbackError)
     {
         if(err)
         {
@@ -55,5 +56,15 @@ export function ProcessEditList(req: express.Request, res: express.Response, nex
 }
 export function ProcessDeleteList(req: express.Request, res: express.Response, next: express.NextFunction):void
 {
+let id = req.params.id;
+Contacts.remove({_id:id},function(err:CallbackError)
+{
+    if(err)
+    {
+        console.error(err);
+        res.end(err);
+    }
+    res.redirect('contact-list');
 
+});
 }

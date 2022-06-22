@@ -7,7 +7,7 @@ const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
 const contact_list_1 = require("../Controllers/contact-list");
 const Util_1 = require("../Util");
-router.get('/contact-list', Util_1.AuthGuard, contact_list_1.DisplayContactList);
+router.get('/contact-list', contact_list_1.DisplayContactList);
 router.get('/edit/:id', Util_1.AuthGuard, contact_list_1.DisplayEditList);
 router.post('/edit/:id', Util_1.AuthGuard, contact_list_1.ProcessEditList);
 router.get('/delete/:', Util_1.AuthGuard, contact_list_1.ProcessDeleteList);
